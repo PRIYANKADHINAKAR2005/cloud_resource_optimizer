@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/PRIYANKADHINAKAR2005/cloud_resource_optimizer.git' // Specify the correct branch
+                git branch: 'master', url: 'https://github.com/PRIYANKADHINAKAR2005/cloud_resource_optimizer.git' // Specify the correct branch
             }
         }
     }
