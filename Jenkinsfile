@@ -1,16 +1,17 @@
 pipeline {
     agent any
+
+    environment {
+        GOOGLE_APPLICATION_CREDENTIALS = credentials('GCP_CREDENTIALS') // Uses your GCP JSON key
+    }
+
     stages {
-        stage('Checkout') {
+        stage('Clone Repository') {
             steps {
-                git branch: 'master', url: 'https://github.com/PRIYANKADHINAKAR2005/cloud_resource_optimizer.git'
+                git 'https://github.com/PRIYANKADHINAKAR2005/cloud_resource_optimizer.git' // Change to your repo URL
             }
         }
-        stage('Build') {
-            steps {
-                echo 'Building the project'
-                // Add your build steps here, e.g., npm install
-            }
-        }
+
+        // Additional stages as needed
     }
 }
