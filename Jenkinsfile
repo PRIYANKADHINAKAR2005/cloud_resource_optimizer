@@ -12,6 +12,16 @@ pipeline {
             }
         }
 
-        // Additional stages as needed
+        stage('Fetch Cloud Costs') {
+            steps {
+                script {
+                    def result = sh(script: """
+                        gcloud auth activate-service-account --key-file=\$GOOGLE_APPLICATION_CREDENTIALS
+                        gcloud beta billing projects list
+                    """, returnStdout: true).trim()
+                    echo "Billing Data: \\n${result}"
+                }
+            }
+        }
     }
 }
